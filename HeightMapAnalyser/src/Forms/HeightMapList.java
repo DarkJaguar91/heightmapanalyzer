@@ -2,7 +2,6 @@ package Forms;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
@@ -37,7 +36,7 @@ public class HeightMapList extends JInternalFrame implements MouseListener,
 	private static final long serialVersionUID = 1L;
 	private MainForm parent;
 	private JPopupMenu popMenu;
-	private heighMapDisplay currentRightClick = null;
+	private heightMapDisplay currentRightClick = null;
 	private JMenuItem reName, delete;
 	private JPanel pane;
 	
@@ -52,9 +51,9 @@ public class HeightMapList extends JInternalFrame implements MouseListener,
 
 		setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screenSize = parent.getPreferredSize();
 
-		this.setPreferredSize(new Dimension((int) (screenSize.width * 0.35f),
+		this.setPreferredSize(new Dimension((int) (screenSize.width * 0.5f),
 				0));
 		
 		pane = new JPanel();
@@ -86,7 +85,7 @@ public class HeightMapList extends JInternalFrame implements MouseListener,
 	 */
 	public void addImage(Data.HeightMap map) {
 		if (map != null) {
-			heighMapDisplay disp = new heighMapDisplay(map);
+			heightMapDisplay disp = new heightMapDisplay(map);
 			disp.addMouseListener(this);
 			pane.add(disp);
 //			pane.setPreferredSize(new Dimension(0, (int)(Math.ceil(((double)(pane.getComponentCount())/2))*(getWidth()/2))));
@@ -113,8 +112,8 @@ public class HeightMapList extends JInternalFrame implements MouseListener,
 		Vector<Data.HeightMap> out = new Vector<HeightMap>();
 		for (int i = 0; i < pane.getComponentCount(); ++i) {
 			Component p = pane.getComponent(i);
-			if (p instanceof heighMapDisplay) {
-				out.add(((heighMapDisplay) p).getMap());
+			if (p instanceof heightMapDisplay) {
+				out.add(((heightMapDisplay) p).getMap());
 			}
 		}
 
@@ -125,12 +124,12 @@ public class HeightMapList extends JInternalFrame implements MouseListener,
 	 * Mouse events and getters/setters
 	 */
 	public void mouseClicked(MouseEvent arg0) {
-		if (arg0.getModifiers() == InputEvent.BUTTON3_MASK) {
-			currentRightClick = (heighMapDisplay) arg0.getSource();
+		if (arg0.getModifiers() == InputEvent.BUTTON3_MASK) { // show right click windows
+			currentRightClick = (heightMapDisplay) arg0.getSource();
 			popMenu.show(arg0.getComponent(), arg0.getX(), arg0.getY());
 		}
-		if (arg0.getModifiers() == InputEvent.BUTTON1_MASK)
-			parent.setActiveMap(((heighMapDisplay) arg0.getSource()).getMap());
+		if (arg0.getModifiers() == InputEvent.BUTTON1_MASK) // change the height map display to chosen height map
+			parent.setActiveMap(((heightMapDisplay) arg0.getSource()).getMap());
 	}
 
 	public void mouseEntered(MouseEvent arg0) {

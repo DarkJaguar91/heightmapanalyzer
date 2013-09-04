@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
@@ -39,9 +38,9 @@ public class GraphContainer extends JInternalFrame {
 	ChartPanel panel = null;
 
 	/**
-	 * Constructor (intialises the jinternal fram components)
+	 * Constructor (intialises the jinternal frame components)
 	 */
-	public GraphContainer() {
+	public GraphContainer(Dimension formSize) {
 		super("Graph");
 
 		setLayout(new BorderLayout());
@@ -52,10 +51,10 @@ public class GraphContainer extends JInternalFrame {
 
 		panel = new ChartPanel(null);
 
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screenSize = formSize;
 
-		panel.setPreferredSize(new Dimension((int) (screenSize.width * 0.35f),
-				(int) (screenSize.height * 0.35f)));
+		panel.setPreferredSize(new Dimension((int) (screenSize.width * 0.5f),
+				(int) (screenSize.height * 0.7f)));
 
 		this.add(panel, BorderLayout.CENTER);
 

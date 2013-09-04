@@ -487,27 +487,16 @@ public class ComparisonScreen extends JPanel {
 			for (int j = 0; j < xData.length; ++j)
 				zData[j + i * (xData.length)] = h.getData()[i][j];
 		newData = new SimpleGrid(zData, xData, yData, "");
-		/*
-		 * Create the layout without a Logo image and with the ColorKey on a
-		 * separate Pane object.
-		 */
+		
+		
 		rpl = new JPlotLayout(true, false, false, "", null, false);
 		rpl.setEditClasses(false);
-		/*
-		 * Create a GridAttribute for CONTOUR style.
-		 */
 		Range2D datar = new Range2D(h.getMinHeight(), h.getMaxHeight(),
 				(h.getMaxHeight() - h.getMinHeight()) / NUM_CONTOUR_LINES);
 		clevels = ContourLevels.getDefault(datar);
 		GridAttribute gridAttr_ = new GridAttribute(clevels);
-		/*
-		 * Create a ColorMap and change the style to RASTER_CONTOUR.
-		 */
 		gridAttr_.setColorMap(createColorMap(datar));
 		gridAttr_.setStyle(GridAttribute.RASTER_CONTOUR);
-		/*
-		 * Add the grid to the layout and give a label for the ColorKey.
-		 */
 		rpl.setKeyLayerSizeP(new Dimension2D(0, 0));
 		rpl.setKeyBoundsP(new Rectangle2D.Double(0.0, 0, 0.0, 0));
 		newData.setKeyTitle(new SGLabel("KEY LABEL", "", new Point2D.Double(
@@ -515,21 +504,8 @@ public class ComparisonScreen extends JPanel {
 		newData.setXMetaData(new SGTMetaData("x", "Position"));
 		newData.setYMetaData(new SGTMetaData("Y", "Position"));
 		rpl.addData(newData, gridAttr_, "");
-		/*
-		 * Change the layout's three title lines.
-		 */
 		rpl.setTitles("Contour Plot", "for", h.getName());
-		/*
-		 * Resize the graph and place in the "Center" of the frame.
-		 */
 		rpl.setSize(new Dimension(600, 400));
-		/*
-		 * Resize the key Pane, both the device size and the physical size. Set
-		 * the size of the key in physical units and place the key pane at the
-		 * "South" of the frame.
-		 */
-		// rpl.setKeyLayerSizeP(new Dimension2D(6.0, 1.02));
-		// rpl.setKeyBoundsP(new Rectangle2D.Double(0.01, 1.01, 5.98, 1.0));
 
 		return rpl;
 	}

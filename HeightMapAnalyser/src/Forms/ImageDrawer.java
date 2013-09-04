@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -89,16 +88,19 @@ public class ImageDrawer extends JInternalFrame implements ActionListener {
 
 		// end of tool menu
 
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screenSize = mForm.getPreferredSize();
 
-		label.setPreferredSize(new Dimension((int) (screenSize.width * 0.35f),
-				(int) (screenSize.height * 0.35f)));
+		label.setPreferredSize(new Dimension((int) (screenSize.width * 0.5f),
+				(int) (screenSize.height * 0.9f)));
 
 		add(label, BorderLayout.CENTER);
 
 		setVisible(true);
 	}
 
+	/**
+	 * Refreshes all the buttons
+	 */
 	public void refreshButtons(){
 		xAxis.setBackground(usual);
 		yAxis.setBackground(usual);

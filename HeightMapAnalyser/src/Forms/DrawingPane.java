@@ -89,10 +89,10 @@ public class DrawingPane extends JLabel implements MouseListener,
 	private void addPoint(Point p) {
 		if (hMap != null) {
 
-			if (drawingType == 0) {
+			if (drawingType == 0) { // draw line ambiguously 
 				hMap.convertToImageCoordAndAdd(p, this.getWidth(),
 						this.getHeight(), tempPoints);
-			} else if (drawingType == 1) {
+			} else if (drawingType == 1) { // draw a horizontal line
 				tempPoints = new Vector<Point>();
 				hMap.resetImage();
 
@@ -102,7 +102,7 @@ public class DrawingPane extends JLabel implements MouseListener,
 					hMap.convertToImageCoordAndAdd(new Point(i, yPos),
 							this.getWidth(), this.getHeight(), tempPoints);
 				}
-			} else if (drawingType == 2) {
+			} else if (drawingType == 2) { // draw a verticle line
 				tempPoints = new Vector<Point>();
 				hMap.resetImage();
 
@@ -112,7 +112,7 @@ public class DrawingPane extends JLabel implements MouseListener,
 					hMap.convertToImageCoordAndAdd(new Point(xPos, i),
 							this.getWidth(), this.getHeight(), tempPoints);
 				}
-			} else if (drawingType == 3) {
+			} else if (drawingType == 3) { // diagonal 1
 				tempPoints = new Vector<Point>();
 				hMap.resetImage();
 
@@ -126,7 +126,7 @@ public class DrawingPane extends JLabel implements MouseListener,
 
 					start = new Point(start.x + 1, start.y - 1);
 				}
-			} else if (drawingType == 4) {
+			} else if (drawingType == 4) { // diagonal 2
 				tempPoints = new Vector<Point>();
 				hMap.resetImage();
 
@@ -166,6 +166,7 @@ public class DrawingPane extends JLabel implements MouseListener,
 	public void mouseWheelMoved(MouseWheelEvent e) {
 	}
 
+	// this method allows for continuous adding of data
 	public void mouseDragged(MouseEvent e) {
 		addPoint(e.getPoint());
 		if (hMap != null) {
@@ -175,6 +176,7 @@ public class DrawingPane extends JLabel implements MouseListener,
 		}
 	}
 
+	// shows the mouse position
 	public void mouseMoved(MouseEvent e) {
 		if (hMap != null) {
 			Point pnt = hMap.convertToImageCoord(e.getPoint(), this.getWidth(),
@@ -186,6 +188,7 @@ public class DrawingPane extends JLabel implements MouseListener,
 	public void mouseClicked(MouseEvent e) {
 	}
 
+	// clears the map lines and creates a new set
 	public void mousePressed(MouseEvent e) {
 		if (hMap != null) {
 			tempPoints = new Vector<Point>();
