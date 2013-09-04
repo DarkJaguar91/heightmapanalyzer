@@ -32,7 +32,7 @@ public class SelectPage extends JFrame implements MouseListener, ActionListener 
 	 */
 	private static final long serialVersionUID = 1L;
 	JPanel pane;
-	Vector<heighMapDisplay> selected;
+	Vector<heightMapDisplay> selected;
 	JButton button;
 	MainForm mainForm;
 	
@@ -68,7 +68,7 @@ public class SelectPage extends JFrame implements MouseListener, ActionListener 
 		getContentPane().add(sc, BorderLayout.CENTER);
 		getContentPane().add(button, BorderLayout.SOUTH);
 		
-		selected = new Vector<heighMapDisplay>();
+		selected = new Vector<heightMapDisplay>();
 
 		for (Data.HeightMap map : maps){
 			addMap(map);
@@ -83,7 +83,7 @@ public class SelectPage extends JFrame implements MouseListener, ActionListener 
 	 */
 	public void addMap(Data.HeightMap map) {
 		if (map != null) {
-			heighMapDisplay disp = new heighMapDisplay(map);
+			heightMapDisplay disp = new heightMapDisplay(map);
 			disp.setBackground(Color.GRAY);
 			disp.addMouseListener(this);
 			pane.add(disp);
@@ -97,7 +97,7 @@ public class SelectPage extends JFrame implements MouseListener, ActionListener 
 	 * mouse events - getters setters - action performed overiders
 	 */
 	public void mouseClicked(MouseEvent e) {
-		heighMapDisplay disp = (heighMapDisplay) e.getSource();
+		heightMapDisplay disp = (heightMapDisplay) e.getSource();
 		
 		if (!selected.contains(disp)){
 			if (selected.size() < 2){

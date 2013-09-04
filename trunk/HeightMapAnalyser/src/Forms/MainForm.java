@@ -138,7 +138,7 @@ public class MainForm extends JFrame implements ActionListener {
 		// end of menu bar
 
 		imageForm = new ImageDrawer(this);
-		graphForm = new GraphContainer();
+		graphForm = new GraphContainer(this.getPreferredSize());
 		mapList = new HeightMapList(this);
 		compScreen = new ComparisonScreen();
 		// this.getContentPane().add(compScreen, BorderLayout.CENTER);

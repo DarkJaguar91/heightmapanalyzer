@@ -22,18 +22,19 @@ VPATH = $(SRCDIR) $(BINDIR) $(SRCDIR)Drawing3D/ $(SRCDIR)Data/ $(SRCDIR)Graphics
 	@if [ ! -d $(BINDIR) ]; then mkdir $(BINDIR); fi; $(JAVACPATH) $(PARAMS) $<
 runner.class:runner.java MainForm.class
 HeightMap.class:HeightMap.java ImageCreator.class
-heighMapDisplay.class:heighMapDisplay.java HeightMap.class GridLayoutVerticalMod.class
+heightMapDisplay.class:heightMapDisplay.java HeightMap.class GridLayoutVerticalMod.class
 ImageDrawer.class:ImageDrawer.java DrawingPane.class ActiveMap.class MainForm.class
 MainForm.class:MainForm.java GraphContainer.class ComparisonScreen.class SelectPage.class HeightMapList.class ActiveMap.class
 DrawingPane.class:DrawingPane.java MainForm.class ActiveMap.class
 GraphContainer.class:GraphContainer.java HeightMap.class ActiveMap.class
 ActiveMap.class:ActiveMap.java HeightMap.class
 ComparisonScreen.class:ComparisonScreen.java HeightMap.class HeightMap3DRenderer.class ActiveMap.class DifferanceMap.class
-HeightMapList.class:HeightMapList.java HeightMap.class heighMapDisplay.class
-SelectPage.class:SelectPage.java HeightMap.class heighMapDisplay.class GridLayoutVerticalMod.class
+HeightMapList.class:HeightMapList.java HeightMap.class heightMapDisplay.class
+SelectPage.class:SelectPage.java HeightMap.class heightMapDisplay.class GridLayoutVerticalMod.class
 DifferanceMap.class:DifferanceMap.java HeightMap.class
 HeightMap3DRenderer.class:HeightMap3DRenderer.java SurfaceInterpolator.class HeightMap.class
 GridLayoutVerticalMod.class:GridLayoutVerticalMod.java
+
 
 run:
 	clear
